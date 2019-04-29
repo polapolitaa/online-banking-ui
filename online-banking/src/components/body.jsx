@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/body.css';
+import Home from './home';
 
 
 class Body extends Component{
@@ -26,7 +27,7 @@ class Body extends Component{
                 </div>
                 
                 <div id="def-views">
-                    <h1>For views</h1>
+                    <Home />
                 </div>
 
             </div>
