@@ -5,6 +5,9 @@ import Home from './home';
 
 class Body extends Component{
     render(){
+
+        let depList = this.props.depList;
+        let acctList = this.props.acctList;
         return(
             <div id="body" className='divborder'>
                <div id="func">
@@ -27,7 +30,16 @@ class Body extends Component{
                 </div>
                 
                 <div id="def-views">
-                    <Home />
+                    {depList.map(depositor =>{
+                        return(
+                        
+                            <Home depFName={depositor.dep_fname} depMName={depositor.dep_mname} 
+                                    depLName={depositor.dep_lname} depAddress={depositor.address}
+                                     depContactNo={depositor.contactNo}/>
+                            
+                            
+                        )
+                    })}
                 </div>
 
             </div>

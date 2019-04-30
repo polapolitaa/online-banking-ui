@@ -6,7 +6,6 @@ class Header extends Component{
         return(
             <div id="header" className='divborder'>
                 <h1 className="headTxt">JVB Banking Corporation</h1>
-				<hr/>
             </div>
         );
     }
