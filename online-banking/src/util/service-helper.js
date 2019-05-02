@@ -1,4 +1,4 @@
-import {getDepositorURL, getAccountsURL} from './service-url';
+import {getDepositorURL, getAccountsURL, getMerchantURL} from './service-url';
 import axios from 'axios';
 
 const getDepositor = () => {
@@ -9,7 +9,12 @@ const getAccounts = () => {
     return axios.get(getAccountsURL);
 }
 
+const getMerchants = () => {
+    return axios.get(getMerchantURL);
+}
+
 export {
     getDepositor,
-    getAccounts
+    getAccounts,
+    getMerchants
 }

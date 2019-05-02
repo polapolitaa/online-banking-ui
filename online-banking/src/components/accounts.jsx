@@ -1,0 +1,72 @@
+import React, { Component, Fragment } from 'react';
+import '../css/home.css';
+import ShowAccounts from './showAccounts';
+import PropTypes from 'prop-types';
+
+class Accounts extends Component{
+
+    render(){
+
+        let acctList = this.props.acctList;
+
+        return(
+            <div id="accounts">
+                <div className="addAccountsContainer">
+                    <span><h2>Open Account</h2></span>
+                    <hr/>
+                        <form>
+                    
+                        <table className='addAccountTbl'>
+                            <thead>
+
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>Short Name:</td>
+                                    <td><input type="text" name="acct_shortname" placeholder="BILLS" onChange={this.props.handleChangeInfo}/></td>
+                                </tr>
+                                <tr>
+                                    <td>Account No.:</td>
+                                    <td><input type="text" name="acct_no" placeholder="1234567890" onChange={this.props.handleChangeInfo} /></td>
+                                </tr>                               
+                                <tr>
+                                    <td>Account Type:</td>
+                                    <td><input type="radio" name="acct_type" value="Savings" onChange={this.props.handleChangeInfo} />Savings <br/>
+                                    <input type="radio" name="acct_type" value="Checking" onChange={this.props.handleChangeInfo} />Checking  </td>
+                                </tr>
+                                <tr>
+                                    <td>Current Balance: </td>
+                                    <td><input type="text" name="curr_balance" placeholder="12,000" onChange={this.props.handleChangeInfo}/></td>
+                                </tr>
+                            </tbody>
+                            </table>
+                            <span className="acctButton"><button type="button" onClick={this.props.handleAddAccounts}>Add Account</button></span>
+                        </form>
+                </div>
+
+                <div id="showAcctHead">
+                    <h2>List of Accounts</h2>
+                        <hr/>
+                </div>
+                
+                {acctList.map(accounts => {
+                   return(
+                    
+                    <ShowAccounts acctNo={accounts.acct_no} shortName={accounts.acct_shortname}
+                    acctType={accounts.acct_type} currBal={accounts.curr_balance}/>
+            
+                   )
+               })}
+                    
+            </div>
+        );
+    }
+}
+
+Accounts.propTypes = {
+    handleChangeInfo: PropTypes.func,
+    handleAddAccounts: PropTypes.func
+}
+
+export default Accounts;

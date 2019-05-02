@@ -5,12 +5,9 @@ import PropTypes from 'prop-types';
 class ShowDepositor extends Component{
     render(){
 
-
+        
         return(
             <div id="showDepositor">
-            <h3>Depositor Details</h3>
-                <hr/>
-
                 <div>
                    <div id="depName" className="homeTxt">
                    <span>{this.props.depFName} {this.props.depMName} {this.props.depLName}</span>
