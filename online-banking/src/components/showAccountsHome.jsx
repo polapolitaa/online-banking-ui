@@ -2,10 +2,7 @@ import React, { Component, Fragment } from 'react';
 import '../css/home.css';
 import PropTypes from 'prop-types';
 
-class ShowAccounts extends Component{   
-    
-    
-
+class ShowAccountsHome extends Component{
     render(){
 
         
@@ -13,11 +10,8 @@ class ShowAccounts extends Component{
             <div id="showAccounts">
                     
                     <div className="acctDetContainer">
-                    <div>
-                    
+
                     <h4 className="shortName">{this.props.shortName}</h4>
-                   </div>
-                    
                     <hr/>
                     <table className = "acctDetails">
 	                <thead></thead>
@@ -49,11 +43,11 @@ class ShowAccounts extends Component{
     }
 }
 
-ShowAccounts.propTypes = {
+ShowAccountsHome.propTypes = {
     acctNo: PropTypes.number,
     acctType: PropTypes.string,
     currBal: PropTypes.number,
     shortName: PropTypes.string
 }
 
-export default ShowAccounts;
+export default ShowAccountsHome;

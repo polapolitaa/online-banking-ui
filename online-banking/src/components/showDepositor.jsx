@@ -9,17 +9,17 @@ class ShowDepositor extends Component{
         return(
             <div id="showDepositor">
                 <div>
-                   <div id="depName" className="homeTxt">
-                   <span>{this.props.depFName} {this.props.depMName} {this.props.depLName}</span>
-                   </div>
+                    <div id="depName" className="homeTxt">
+                    <span>{this.props.depFName} {this.props.depMName} {this.props.depLName}</span>
+                    </div>
     
-                   <div id="depAddress" className="homeTxt">
+                    <div id="depAddress" className="homeTxt">
                             <span>{this.props.depAddress}</span>
-                   </div>
+                    </div>
     
-                   <div id="depContact" className="homeTxt">
-                   <span>{this.props.depContactNo}</span>
-                   </div>
+                    <div id="depContact" className="homeTxt">
+                    <span>{this.props.depContactNo}</span>
+                    </div>
             </div>
     
 
@@ -29,11 +29,12 @@ class ShowDepositor extends Component{
 }
 
 ShowDepositor.propTypes = {
-    depFName: PropTypes.func,
-    depMName: PropTypes.func,
-    depLName: PropTypes.func,
-    depAddress: PropTypes.func,
-    depContactNo: PropTypes.func,
+    depFName: PropTypes.string,
+    depMName: PropTypes.string,
+    depLName: PropTypes.string,
+    depAddress: PropTypes.string,
+    depContactNo: PropTypes.number,
+    depID: PropTypes.number
 }
 
 export default ShowDepositor;

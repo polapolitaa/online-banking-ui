@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
+import {Route, NavLink, HashRouter} from 'react-router-dom';
 import '../css/body.css';
 import Home from './home';
 import Accounts from './accounts';
 import Merchants from './merchants';
-import {
-    getDepositor,
-    getAccounts,
-    getMerchants
-  } from '../util/service-helper';
+import { getDepositor, getAccounts, getMerchants} from '../util/service-helper';
 import axios from 'axios';
 
 class Body extends Component{
@@ -36,7 +33,8 @@ class Body extends Component{
         this.getAccounts();
         this.getMerchants();
       }
-      
+
+  //DEPOSITOR
       //show depositor
       getDepositor(){
         getDepositor().then(res => {
@@ -47,6 +45,25 @@ class Body extends Component{
         )
       }
 
+
+ //ACCOUNTS
+
+        handleChangeInfo = e => {
+          const {name, value} = e.target;
+
+          console.log(e.target);
+          console.log(name);
+          console.log(value);
+
+          this.setState((prevState) => ({
+            accounts: {
+              ...prevState.accounts,
+              [name]: value
+            }
+          }));
+          console.log(this.state.accounts);
+        }
+
       //list all accounts
       getAccounts(){
         getAccounts().then(res => {
@@ -56,29 +73,6 @@ class Body extends Component{
         }
         )
       }
-
-      //list all merchants
-      getMerchants(){
-        getMerchants().then(res => {
-          console.log(res);
-          this.setState({merchList: res.data});
-          console.log("GET");
-          console.log(res.data);
-        })
-      }
-
-
-      handleChangeInfo = e => {
-        const {name, value} = e.target;
-    
-        this.setState((prevState) => ({
-          accounts: {
-            ...prevState.accounts,
-            [name]: value
-          }
-        }));
-      }
-
 
       //add accounts
       handleAddAccounts = acct => {
@@ -100,6 +94,42 @@ class Body extends Component{
           console.log(res.data);
         });
       }
+
+      handleEditAccounts = acct => {
+
+        let accounts = this.state.accounts;
+        let acctList = [...this.state.acctList];
+
+        this.setState({acctList : acctList});
+
+        acct.preventDefault();
+
+        console.log("PUT");
+        console.log(accounts);
+        console.log(acctList)
+
+        let headers = {'Content-Type' : 'application/json',}
+        
+        axios.put('http://localhost:8080/OnlineBanking/rest/accounts/', accounts, {headers: headers}).then(res => { 
+          console.log(res.data);
+        });
+        
+
+
+      }
+
+
+   //MERCHANTS
+      //list all merchants
+      getMerchants(){
+        getMerchants().then(res => {
+          console.log(res);
+          this.setState({merchList: res.data});
+          console.log("GET");
+          console.log(res.data);
+        })
+      }
+
 
       handleChangeInfoMerchants = e => {
         const {name, value} = e.target;
@@ -134,23 +164,22 @@ class Body extends Component{
       }
 
       
-
     render(){
-
         return(
+            <HashRouter>
             <div id="body" className='divborder'>
                <div id="func">
                     
                     <div id="home">
-                        <button className="button" name="home">Home</button>
+                        <NavLink to="/"><button className="button" name="home">Home</button></NavLink>
                     </div>
 
                     <div id="accounts">
-                        <button className="button" name="accounts">Accounts</button>
+                    <NavLink to="accounts"><button className="button" name="accounts">Accounts</button></NavLink>
                     </div>
 
                     <div id="merchants">
-                        <button className="button" name="merchants">Merchants</button>
+                    <NavLink to="merchants"><button className="button" name="merchants">Merchants</button></NavLink>
                     </div>
 
                     <div id="Transactions">
@@ -160,18 +189,16 @@ class Body extends Component{
                 
                 <div id="def-views">
                     
-                    {/*<Home depList={this.state.depList} acctList={this.state.acctList} />*/}
+                    <Route exact path="/" render={() => <Home depList={this.state.depList} acctList={this.state.acctList} />}/>
 
-                    {/*<Accounts acctList={this.state.acctList} handleChangeInfo = {this.handleChangeInfo} handleAddAccounts={this.handleAddAccounts}/>*/}
+                    <Route path="/accounts" render={() => <Accounts acctList={this.state.acctList} handleChangeInfo = {this.handleChangeInfo} handleAddAccounts={this.handleAddAccounts} handleEditAccounts={this.handleEditAccounts}/>}/>
 
-                  
-                      <Merchants merchList = {this.state.merchList} 
-                        handleChangeInfo = {this.handleChangeInfo} handleAddMerchants = {this.handleAddMerchants}/>
-                   
+                    <Route path="/merchants" render={() => <Merchants merchList={this.state.merchList} handleChangeInfoMerchants={this.handleChangeInfoMerchants} handleAddMerchants={this.handleAddMerchants}/>}/>               
                         
                 </div>
 
             </div>
+            </HashRouter>
         );
     }
 }

@@ -1,0 +1,16 @@
+.merch-tbl-container{
+    
+    float: left;
+    width: 50%;
+
+}
+
+.pay-merchant{
+    float: left;
+    margin-top: 40px;
+}
+
+.MerchTbl{
+    width: 100%;
+    text-align: left;
+}

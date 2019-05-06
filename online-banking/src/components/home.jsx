@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/home.css';
 import ShowDepositor from './showDepositor';
-import ShowAccounts from './showAccounts';
+import ShowAccountsHome from './showAccountsHome';
 
 class Home extends Component{
     render(){
@@ -13,16 +13,17 @@ class Home extends Component{
             <div id="home">
 
                 {/*SHOW DEPOSITOR */}
-                <div classname="showDepHead">
+                <div className="showDepHead">
                 <h3>Depositor Details</h3>
                  <hr/>
                 </div>
 
                {depList.map(depositor => {
                    return(
-                    <ShowDepositor depFName={depositor.dep_fname} depMName={depositor.dep_mname} 
+                    <ShowDepositor key={depositor.dep_id} depFName={depositor.dep_fname} depMName={depositor.dep_mname} 
                     depLName={depositor.dep_lname} depAddress={depositor.address}
-                     depContactNo={depositor.contactNo}/>
+                     depContactNo={depositor.contactNo} depID={depositor.dep_id}/>
+                     
                    )
                })}
                
@@ -35,10 +36,9 @@ class Home extends Component{
                 
                 {acctList.map(accounts => {
                    return(
-                    
-                    <ShowAccounts acctNo={accounts.acct_no} shortName={accounts.acct_shortname}
+                    <ShowAccountsHome key={accounts.acct_no} acctNo={accounts.acct_no} shortName={accounts.acct_shortname}
                     acctType={accounts.acct_type} currBal={accounts.curr_balance}/>
-            
+          
                    )
                })}
 
