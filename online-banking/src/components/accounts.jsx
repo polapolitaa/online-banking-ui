@@ -59,14 +59,14 @@ class Accounts extends Component{
                                 <tr>
                                     <td>Account No.:</td>
                                     <td>
-                                        <select name="acct_no" onClick={this.props.handleChangeInfo}><option selected="selected">-----</option>{acctList.map((acno)=>
+                                        <select name="acct_no" onClick={this.props.handleChangeInfo}><option>-----</option>{acctList.map((acno)=>
                                             <option key={acno.acct_no} name="acct_no" value={acno.acct_no}>{acno.acct_no}({acno.acct_shortname})</option>)}
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>New Short Name:</td>
-                                    <td><input type="text" name="acct_shortname" onChange={this.props.handleChangeInfo}/></td>
+                                    <td><input type="text" name="acct_shortname" onChange={this.props.handleChangeInfo} /></td>
                                 </tr>
                             </tbody>
                             </table>

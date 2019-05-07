@@ -1,14 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component} from 'react';
 import '../css/home.css';
 import PropTypes from 'prop-types';
 
-class ShowAccounts extends Component{   
-    
-    
+class ShowAccounts extends Component{
 
-    render(){
-
-        
+    render(){ 
         return(
             <div id="showAccounts">
                     

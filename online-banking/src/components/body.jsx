@@ -4,7 +4,7 @@ import '../css/body.css';
 import Home from './home';
 import Accounts from './accounts';
 import Merchants from './merchants';
-import { getDepositor, getAccounts, getMerchants} from '../util/service-helper';
+import { getAccounts, getMerchants} from '../util/service-helper';
 import axios from 'axios';
 
 class Body extends Component{
@@ -33,16 +33,17 @@ class Body extends Component{
         this.getAccounts();
         this.getMerchants();
       }
+      
 
   //DEPOSITOR
       //show depositor
       getDepositor(){
-        getDepositor().then(res => {
-          console.log(res);
+
+        axios.get('http://localhost:8080/OnlineBanking/rest/depositor/').then(res => {
+          
           this.setState({depList: res.data});
-        
-        }
-        )
+          console.log(res.data);
+        });
       }
 
 
@@ -112,10 +113,9 @@ class Body extends Component{
         
         axios.put('http://localhost:8080/OnlineBanking/rest/accounts/', accounts, {headers: headers}).then(res => { 
           console.log(res.data);
+          alert("Account updated");
+          window.location.reload();
         });
-        
-
-
       }
 
 
@@ -129,8 +129,7 @@ class Body extends Component{
           console.log(res.data);
         })
       }
-
-
+      
       handleChangeInfoMerchants = e => {
         const {name, value} = e.target;
     
