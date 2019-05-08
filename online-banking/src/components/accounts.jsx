@@ -45,6 +45,7 @@ class Accounts extends Component{
                         </form>
                 </div>
 
+                {/*EDIT ACCOUNT SHORT NAME */}
                 <div className="editAccountsContainer">
                     <span><h3>Edit Account</h3></span>
                     <hr/>
@@ -59,8 +60,11 @@ class Accounts extends Component{
                                 <tr>
                                     <td>Account No.:</td>
                                     <td>
-                                        <select name="acct_no" onClick={this.props.handleChangeInfo}><option>-----</option>{acctList.map((acno)=>
-                                            <option key={acno.acct_no} name="acct_no" value={acno.acct_no}>{acno.acct_no}({acno.acct_shortname})</option>)}
+                                        <select name="acct_no" onClick={this.props.handleChangeInfo}>
+                                            <option>-----</option>
+                                        {acctList.map((acno)=>
+                                            <option key={acno.acct_no} name="acct_no" value={acno.acct_no}>{acno.acct_no}({acno.acct_shortname})
+                                            </option>)}
                                         </select>
                                     </td>
                                 </tr>

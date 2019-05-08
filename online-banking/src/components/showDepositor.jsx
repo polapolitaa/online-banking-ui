@@ -18,7 +18,7 @@ class ShowDepositor extends Component{
                     </div>
     
                     <div id="depContact" className="homeTxt">
-                    <span>{this.props.depContactNo}</span>
+                    <span>0{this.props.depContactNo}</span>
                     </div>
             </div>
     

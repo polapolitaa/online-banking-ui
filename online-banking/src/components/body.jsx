@@ -42,6 +42,7 @@ class Body extends Component{
         axios.get('http://localhost:8080/OnlineBanking/rest/depositor/').then(res => {
           
           this.setState({depList: res.data});
+          console.log('body');
           console.log(res.data);
         });
       }
@@ -139,6 +140,8 @@ class Body extends Component{
             [name]: value
           }
         }));
+
+        console.log(this.state.merchants);
       }
 
       //add merchants
@@ -181,18 +184,16 @@ class Body extends Component{
                     <NavLink to="merchants"><button className="button" name="merchants">Merchants</button></NavLink>
                     </div>
 
-                    <div id="Transactions">
-                        <button className="button" name="Transactions">Transactions</button> 
-                    </div>           
+                           
                 </div>
                 
                 <div id="def-views">
                     
-                    <Route exact path="/" render={() => <Home depList={this.state.depList} acctList={this.state.acctList} />}/>
+                    <Route exact path="/" render={() => <Home depList={this.state.depList} acctList={this.state.acctList}/>}/>
 
                     <Route path="/accounts" render={() => <Accounts acctList={this.state.acctList} handleChangeInfo = {this.handleChangeInfo} handleAddAccounts={this.handleAddAccounts} handleEditAccounts={this.handleEditAccounts}/>}/>
 
-                    <Route path="/merchants" render={() => <Merchants merchList={this.state.merchList} handleChangeInfoMerchants={this.handleChangeInfoMerchants} handleAddMerchants={this.handleAddMerchants}/>}/>               
+                    <Route path="/merchants" render={() => <Merchants merchList={this.state.merchList} acctList={this.state.acctList} handleChangeInfo = {this.handleChangeInfo} handleChangeInfoMerchants={this.handleChangeInfoMerchants} handleAddMerchants={this.handleAddMerchants}/>}/>               
                         
                 </div>
 
