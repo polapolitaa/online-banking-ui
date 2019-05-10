@@ -51,7 +51,7 @@ class Merchants extends Component{
             merch.preventDefault();
 
             let new_currBalance = this.state.curr_balance2 - this.state.amount;
-            
+                    
             console.log(new_currBalance);
             alert("Bills Paid");
 

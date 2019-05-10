@@ -46,9 +46,9 @@ class ShowAccounts extends Component{
 }
 
 ShowAccounts.propTypes = {
-    acctNo: PropTypes.number,
+    acctNo: PropTypes.string,
     acctType: PropTypes.string,
-    currBal: PropTypes.number,
+    currBal: PropTypes.string,
     shortName: PropTypes.string
 }
 
